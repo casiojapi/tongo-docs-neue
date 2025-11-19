@@ -60,7 +60,7 @@ Both implementations provide the same cryptographic primitives:
 
 ### ElGamal Encryption
 
-Encrypt balances: \\(\text{Enc}[y](b, r) = (g^b y^r, g^r)\\)
+Encrypt balances: $\text{Enc}[y](b, r) = (g^b y^r, g^r)$
 
 **TypeScript**: Proof generation for funding, transfers
 **Cairo**: Ciphertext arithmetic and validation
@@ -68,13 +68,13 @@ Encrypt balances: \\(\text{Enc}[y](b, r) = (g^b y^r, g^r)\\)
 ### Zero-Knowledge Proofs
 
 #### POE (Proof of Exponent)
-Prove \\(y = g^x\\) without revealing \\(x\\)
+Prove $y = g^x$ without revealing $x$
 
 **TypeScript**: Generate proofs
 **Cairo**: Verify proofs on-chain
 
 #### Range Proofs
-Prove \\(b \in [0, 2^{32})\\) using bit decomposition
+Prove $b \in [0, 2^{32})$ using bit decomposition
 
 **TypeScript**: ~500ms generation (32-bit)
 **Cairo**: ~260K Cairo steps verification

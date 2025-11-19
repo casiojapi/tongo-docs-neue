@@ -32,7 +32,7 @@ Each instance of a Tongo `Account` class is identified by its public key. At low
 $$
 pk = g^{sk}
 $$
-where  \\(pk\\) is the public key, \\(sk\\) is the secret key and \\(g\\) is the stark curve generator. This form of the public key is used at low level to create the Zero-Knoledge proofs. To see this representation of the public key of an instance of a Tongo `Account` you can view the `publicKey` property:
+where  $pk$ is the public key, $sk$ is the secret key and $g$ is the stark curve generator. This form of the public key is used at low level to create the Zero-Knoledge proofs. To see this representation of the public key of an instance of a Tongo `Account` you can view the `publicKey` property:
 
 ```typescript
 console.log(account.publicKey);

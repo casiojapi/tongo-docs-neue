@@ -4,7 +4,7 @@ Tongo uses ElGamal encryption over elliptic curves to maintain confidential bala
 
 ## ElGamal Encryption
 
-Each user's balance is encrypted using a public key derived from their private key. ElGamal encryption of an amount \\(b\\) under a public key \\(y\\) is a pair point of the group of elliptic curves points \\(G\\). The encryption function is defined as:
+Each user's balance is encrypted using a public key derived from their private key. ElGamal encryption of an amount $b$ under a public key $y$ is a pair point of the group of elliptic curves points $G$. The encryption function is defined as:
 
 $$\begin{aligned}
 \text{Enc}[y]&: [0, b_{\max}) \times \mathbb{F}_p \rightarrow G^2 \\\\
@@ -13,11 +13,11 @@ $$\begin{aligned}
 
 Where:
 
-- \\(y = g^x\\) is the user's public key (derived from private key \\(x\\))
-- \\(g\\) is the generator of the Stark curve
-- \\(b\\) is the balance amount in the range \\([0, b_{\max})\\)
-- \\(r\\) is a random blinding factor
-- \\(p\\) is the curve order
+- $y = g^x$ is the user's public key (derived from private key $x$)
+- $g$ is the generator of the Stark curve
+- $b$ is the balance amount in the range $[0, b_{\max})$
+- $r$ is a random blinding factor
+- $p$ is the curve order
 
 ## Additive Homomorphism
 
@@ -33,14 +33,14 @@ This allows the contract to:
 
 ## Balance Decryption
 
-To read their balance, a user recovers \\(g^b\\) using their private key \\(x\\):
+To read their balance, a user recovers $g^b$ using their private key $x$:
 
 $$\frac{L}{R^x} = \frac{g^b y^r}{(g^r)^x} = \frac{g^b (g^x)^r}{g^{rx}} = g^b$$
 
-Since \\(b\\) is bounded by \\([0, b_{\max})\\), the discrete logarithm \\(b\\) can be brute-forced. The time requiered to decript a balance depends on \\(b_{\max}\\). Tongo is parametrized in this variable that we call `bit_size` the current implementation of Tongo uses `bit_size = 32`. A naïve JavaScript implementation can decrypt ~100k units per second, while optimized algorithms handle the full 32-bit range much faster. The common algorithms used for this kind of decryption are:
+Since $b$ is bounded by $[0, b_{\max})$, the discrete logarithm $b$ can be brute-forced. The time requiered to decript a balance depends on $b_{\max}$. Tongo is parametrized in this variable that we call `bit_size` the current implementation of Tongo uses `bit_size = 32`. A naïve JavaScript implementation can decrypt ~100k units per second, while optimized algorithms handle the full 32-bit range much faster. The common algorithms used for this kind of decryption are:
 
-1. **Brute force**: Iterate \\(g^i\\) for \\(i = 0, 1, 2, \ldots\\) until matching \\(g^b\\)
-2. **Baby-step Giant-step**: More efficient \\(O(\sqrt{n})\\) algorithm
+1. **Brute force**: Iterate $g^i$ for $i = 0, 1, 2, \ldots$ until matching $g^b$
+2. **Baby-step Giant-step**: More efficient $O(\sqrt{n})$ algorithm
 3. **Pollard's rho**: Probabilistic algorithm with similar complexity
 
 

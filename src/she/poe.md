@@ -4,7 +4,7 @@ The POE protocol is a building block of other protocols. Given the relation
 
 $$ y = g^x $$
 
-where \\(g\\) is a known generator point, \\(y\\) is a known public point and \\(x\\) is the secret witness. A Zero-Knowledge proof of exponent is used to show knowledge of \\(x\\) such that the previous relation holds.
+where $g$ is a known generator point, $y$ is a known public point and $x$ is the secret witness. A Zero-Knowledge proof of exponent is used to show knowledge of $x$ such that the previous relation holds.
 
 
 ## Protocol (Interactive)

@@ -4,7 +4,7 @@ The POEN protocol is the generalization of POE to N exponents. Given the relatio
 
 $$ y = \prod_{i=1}^{N} g_i^{x_i}$$
 
-where \\(g_i\\) are \\(N\\) different generatos  with discrete log relation unknown, \\(y\\) is a known public point and the set of  \\(x_i\\) are the secret witnesses. The POEN procolo is used to show knowledge of \\(x_i\\) such that the previous relation holds.
+where $g_i$ are $N$ different generatos  with discrete log relation unknown, $y$ is a known public point and the set of  $x_i$ are the secret witnesses. The POEN procolo is used to show knowledge of $x_i$ such that the previous relation holds.
 
 > **Design choice**: Althoug POE and POE2 are particular cases of this protocol and having only the protocol POEN should be enough, we have decided to have the three protocols to reduce some overhead.
 

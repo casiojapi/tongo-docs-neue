@@ -24,7 +24,7 @@ The protocol supports multiple compliance models:
 
 ### 1. Key Generation
 
-Each user generates a keypair \\((x, y = g^x)\\) where \\(g\\) is the Stark curve generator. The public key \\(y\\) serves as their account identifier.
+Each user generates a keypair $(x, y = g^x)$ where $g$ is the Stark curve generator. The public key $y$ serves as their account identifier.
 
 ### 2. Encrypted Balances
 

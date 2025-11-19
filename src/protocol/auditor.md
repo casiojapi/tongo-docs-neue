@@ -4,7 +4,7 @@ Tongo provides flexible auditing mechanisms that enable compliance without sacri
 
 ## Global Auditor
 
-The Tongo contract can designate a **global auditor** with public key \\(y_a\\), the owner of the Tongo instance can rotate the auditor key anytime. If a Tongo instance was deployed without an auditor, it cannot be added after.
+The Tongo contract can designate a **global auditor** with public key $y_a$, the owner of the Tongo instance can rotate the auditor key anytime. If a Tongo instance was deployed without an auditor, it cannot be added after.
 
 
 ### **Auditor Encryptions**
@@ -23,10 +23,10 @@ $$y_a = g^{a_1 + a_2} = g^{a_1} \cdot g^{a_2} = y_{a_1} \cdot y_{a_2}$$
 
 Individual auditors can compute partial decryptions:
 
-- Auditor 1: \\(R^{a_1} = (g^r)^{a_1}\\)
-- Auditor 2: \\(R^{a_2} = (g^r)^{a_2}\\)
+- Auditor 1: $R^{a_1} = (g^r)^{a_1}$
+- Auditor 2: $R^{a_2} = (g^r)^{a_2}$
 
-The balance is recovered by combining: \\(g^b = L_a / (R^{a_1} \cdot R^{a_2})\\)
+The balance is recovered by combining: $g^b = L_a / (R^{a_1} \cdot R^{a_2})$
 
 This prevents any single auditor from unilaterally accessing transaction data.
 
@@ -35,19 +35,19 @@ After a transfer is completed, participants may need to prove a specific transac
 
 ### **Protocol**
 
-Consider a completed transfer with ciphertext \\((TL, TR) = (g^{b_0} y^{r_0}, g^{r_0})\\). To prove the transfer amount to a third party with public key \\(\bar{y}\\). The sender must creates a new encryption of the transfer amount for \\(\bar{y}\\):
+Consider a completed transfer with ciphertext $(TL, TR) = (g^{b_0} y^{r_0}, g^{r_0})$. To prove the transfer amount to a third party with public key $\bar{y}$. The sender must creates a new encryption of the transfer amount for $\bar{y}$:
 
 $$(\bar{L}, R) = \text{Enc}[\bar{y}](b, r)$$
 
-The sender must provide a comprehensive proof \\(\pi_{\text{ExPost}}\\) demonstrating:
+The sender must provide a comprehensive proof $\pi_{\text{ExPost}}$ demonstrating:
 
 ### 1. Ownership Proof
 
-Prove knowledge of private key \\(x\\) such that \\(y_s = g^x\\). This proof can only be constructed with knowledge of the private key \\(x\\).
+Prove knowledge of private key $x$ such that $y_s = g^x$. This proof can only be constructed with knowledge of the private key $x$.
 
 ### 2. Same Encryption Proof
 
-Prove that the given encryption is a correct ElGamal encryption under \\(\bar{y}\\). It also shows that this encryption and \\((TL, TR)\\) are encrypting the same amount.
+Prove that the given encryption is a correct ElGamal encryption under $\bar{y}$. It also shows that this encryption and $(TL, TR)$ are encrypting the same amount.
 
 
 ### **Off-Chain Verification**
@@ -90,7 +90,7 @@ Multiple auditors with threshold decryption:
 
 $$y_a = \sum_{i=1}^n w_i \cdot y_{a_i}$$
 
-Where \\(w_i\\) are threshold weights and \\(t\\) out of \\(n\\) auditors are required for decryption.
+Where $w_i$ are threshold weights and $t$ out of $n$ auditors are required for decryption.
 
 ### Zero-Knowledge Compliance
 

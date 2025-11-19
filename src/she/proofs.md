@@ -18,7 +18,7 @@ $$c = \text{Hash}(\text{prefix}, A_1, A_2, \ldots, A_n)$$
 
 Where:
 - `prefix` binds the proof to a specific context (nonce, contract address, etc.)
-- \\(A_i\\) are the commitment points
+- $A_i$ are the commitment points
 - `Hash` is Poseidon (Starknet-native hash function)
 
 ### Implementation

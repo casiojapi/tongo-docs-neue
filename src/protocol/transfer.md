@@ -4,7 +4,7 @@ The transfer operation is the core of Tongo's confidential payment system, allow
 
 ## Transfer Overview
 
-When a user (sender) with public key \\(y_s\\) and balance \\(b_0\\) wants to transfer amount \\(b < b_0\\) to a receiver with public key \\(y_r\\), they must:
+When a user (sender) with public key $y_s$ and balance $b_0$ wants to transfer amount $b < b_0$ to a receiver with public key $y_r$, they must:
 
 1. **Create encryptions** for sender, receiver, and auditor
 2. **Generate ZK proofs** to validate the transaction
@@ -14,7 +14,7 @@ The key insight is that balances are updated **homomorphically** without reveali
 
 ## Multi-Party Encryption
 
-The sender creates (at least) three encryptions of the same amount \\(b\\) using the same blinding factor \\(r\\):
+The sender creates (at least) three encryptions of the same amount $b$ using the same blinding factor $r$:
 
 ### Sender Encryption
 
@@ -34,7 +34,7 @@ $$(\mathit{L_a}, \mathit{R_a}) = \text{Enc}[y_a](b, r) = (g^b y_a^r, g^r)$$
 
 This provides an audit trail for compliance without revealing amounts.
 
-> **Security Note**: Using the same blinding factor \\(r\\) across all encryptions is safe for single-recipient transfers but could enable insider attacks in multi-recipient schemes. Tongo mitigates this by design.
+> **Security Note**: Using the same blinding factor $r$ across all encryptions is safe for single-recipient transfers but could enable insider attacks in multi-recipient schemes. Tongo mitigates this by design.
 
 ## Transaction Structure
 
@@ -53,31 +53,31 @@ struct Transfer {
 
 ## Required Zero-Knowledge Proofs
 
-The sender must provide a comprehensive proof \\(\pi_{\text{transfer}}\\) demonstrating:
+The sender must provide a comprehensive proof $\pi_{\text{transfer}}$ demonstrating:
 
 ### 1. Ownership Proof (POE)
 
-Prove knowledge of private key \\(x\\) such that \\(y_s = g^x\\):
+Prove knowledge of private key $x$ such that $y_s = g^x$:
 
 $$\pi_{\text{ownership}}: \{(g, y_s; x) : y_s = g^x\}$$
 
 ### 2. Blinding Factor Proof (POE)
 
-Prove knowledge of \\(r\\) such that \\(R = g^r\\):
+Prove knowledge of $r$ such that $R = g^r$:
 
 $$\pi_{\text{blinding}}: \{(g, R; r) : R = g^r\}$$
 
 ### 3. Encryption Validity (PED)
 
-Prove that \\(L_s\\) is correctly formed:
+Prove that $L_s$ is correctly formed:
 
 $$\pi_{\text{sender}}: \{(g, y_s, L_s; b, r) : L_s = g^b y_s^r\}$$
 
-Prove that \\(L_r\\) uses the same \\(b\\) and \\(r\\):
+Prove that $L_r$ uses the same $b$ and $r$:
 
 $$\pi_{\text{receiver}}: \{(g, y_r, L_r; b, r) : L_r = g^b y_r^r\}$$
 
-Prove that \\(L_a\\) uses the same \\(b\\) and \\(r\\):
+Prove that $L_a$ uses the same $b$ and $r$:
 
 $$\pi_{\text{auditor}}: \{(g, y_a, L_a; b, r) : L_a = g^b y_a^r\}$$
 
@@ -91,7 +91,7 @@ Prove the remaining balance is non-negative:
 
 $$\pi_{\text{remaining}}: \{(g, h, V_{b^\prime}; b^\prime, r_{b^\prime}) : V_{b^\prime} = g^{b^\prime} h^{r_{b^\prime}} \land b^\prime \in [0, b_{\max})\}$$
 
-Where \\(b^\prime = b_0 - b\\) is the sender's balance after the transfer.
+Where $b^\prime = b_0 - b$ is the sender's balance after the transfer.
 
 ## Complete Transfer Proof
 
@@ -108,7 +108,7 @@ $$\begin{aligned}
 &\land b^\prime \in [0, b_{\max})\\}
 \end{aligned}$$
 
-Where \\((L_0, R_0)\\) represents the sender's current encrypted balance.
+Where $(L_0, R_0)$ represents the sender's current encrypted balance.
 
 ## Balance Updates
 
