@@ -29,6 +29,14 @@ jobs:
       - name: Build book
         run: mdbook build
 
+      - name: Verify theme files exist
+        run: |
+          echo "Checking for theme files..."
+          ls -la book/theme/ || echo "Theme directory not found!"
+          cat book/index.html | grep "theme/custom.css" || echo "CSS not referenced in HTML!"
+          echo "All files in book directory:"
+          find book -type f | sort
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
